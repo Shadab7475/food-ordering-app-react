@@ -4,11 +4,13 @@ import Body from './components/Body'
 import {Route, Routes} from "react-router-dom"
 import RestaurentMenu from './components/RestaurentMenu'
 import {  Coordinates,  HandleQuatitis,  ItemQuantities, ToastContext, } from './components/Context'
-import CardItem from './components/CardItem'
+
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteItem } from './utilsh/cartSlice'
+import Search from './components/Search'
+import CartItem from './components/CartItem'
 
-// localStorage.clear();
+
 
 
 
@@ -18,7 +20,7 @@ const App = () => {
     const seved = localStorage.getItem("coord")
     return seved ? JSON.parse(seved) : {lat:18.9821101,lng:72.826509}
   })
-  // const [CardData, setCardData] = useState([])
+  
   
   
  const [visible, setvisible] = useState(true)
@@ -35,28 +37,7 @@ const App = () => {
 
  const dispatch = useDispatch()
 
- 
-
-
-
-
-  // const Handle_from_localStorage = ()=>{
-  //   let data = JSON.parse(localStorage.getItem("CardData")) || []
-  //   setCardData(data)
-
-  // }
-
-  // useEffect(() => {
-  //   Handle_from_localStorage()
-  // }, [])
-
   const CardData = useSelector((state)=>state.cartSlice.cartItems)
- 
-  
-  
-
-
-  
  
   useEffect(() => {
     localStorage.setItem("coord", JSON.stringify(coord))
@@ -88,22 +69,11 @@ const App = () => {
 
          return rest ;
          
-         
-
       }
     })
     
 }
 
-// const ClearCart = ()=>{
-//   // setCardData([]);
-//   dispatch(clearCart())
- 
-//  }
-
-
-  
-  
   return (
     <HandleQuatitis.Provider value={{HandleAdd, HandleRemoveCard,showPopup,setshowPopup }}>
     <ItemQuantities.Provider value={{quantities,setquantities, total, settotal}}>
@@ -113,8 +83,9 @@ const App = () => {
     <Routes>
       <Route path='/' element={<Header/>}>
       <Route path='/' element={<Body/>}/>
-      <Route path='restaurantMenu/:city/:id' element={<RestaurentMenu />}/>
-      <Route path='/cart' element={<CardItem />}/>
+      <Route path='restaurantMenu/:id' element={<RestaurentMenu />}/>
+      <Route path='/cart' element={<CartItem />}/>
+      <Route path='/search' element={<Search />}/>
       <Route path='/*' element={<h1 className='m-100'>coming....</h1>}/>     
       </Route>
     </Routes>

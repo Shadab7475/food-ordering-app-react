@@ -3,13 +3,11 @@ import { FaStar } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 const RestaurantCard = (info) => {
-  
-  
+
   let parts = info.link.split("/");
-  let result = parts.slice(4,6).join("/")
 
+  let result = parts.slice(5)
 
-  
   return (
     <Link to={`/restaurantMenu/${result}`}>
           <div className='min-w-[295px] h-[185px] relative '>

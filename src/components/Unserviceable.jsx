@@ -1,4 +1,4 @@
-// import React, { useState } from 'react'
+import React from 'react'
 
 const Unserviceable = ({Apiresult:{data:{cards}}}) => {
    
@@ -25,8 +25,8 @@ const Unserviceable = ({Apiresult:{data:{cards}}}) => {
             <h1 className=" ml-6 text-[24px] font-bold tracking-tight rgba(2,6,12,0.92)">{secoundCard?.card?.card?.title}</h1>
             <div className="w-full  flex flex-wrap">
                 {
-                    city.map(({text})=>(
-                        <div className="cursor-pointer rounded-2xl p-1 border-2 border-[rgba(2,6,12,0.1)] w-[280px] h-[60px] items-center flex justify-center mt-[16px] mx-auto  ">
+                    city.map(({text},i)=>(
+                        <div key={i} className="cursor-pointer rounded-2xl p-1 border-2 border-[rgba(2,6,12,0.1)] w-[280px] h-[60px] items-center flex justify-center mt-[16px] mx-auto  ">
                             <h3 className="gap text-[gba(2,6,12,0.75)]">{text}</h3>
 
                         </div>

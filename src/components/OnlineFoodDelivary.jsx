@@ -33,7 +33,7 @@ const OnlineFoodDelivary = ({data,title}) => {
   return (
     <div className='mt-12  '>
         <h2 className='font-bold text-4xl custom-text ml-4'>{title}</h2>
-        <div className='flex gap-3 flex-wrap mt-4 pl-4'>
+        <div className='grid grid-cols-2 gap-3 mt-4 pl-4 md:flex md:flex-wrap'> 
           {filterOptions.map((data) => (
             <button
             onClick={()=>filterHandle(data.filteName)}
@@ -45,7 +45,7 @@ const OnlineFoodDelivary = ({data,title}) => {
             </button>
           ))}
         </div>
-        <div className='grid grid-cols-4 gap-4 mt-10'>
+        <div className=' grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 mt-10'>
         {data?.length > 0 && data.map(({info, cta: {link}})=>(
                 <div key={info?.id} className='hover:scale-93 duration-300'>
               <RestaurantCard {...info} link={link} />

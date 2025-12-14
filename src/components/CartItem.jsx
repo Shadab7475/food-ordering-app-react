@@ -13,9 +13,8 @@ import { toogleLoginBar } from '../utilsh/ToogleSlice'
 
 
 
-const CardItem = () => {
+const CartItem = () => {
 
-  // const { CardData } = useContext(CardContext);
   const {setvisible} = useContext(ToastContext)
   const {quantities} = useContext(ItemQuantities)
 
@@ -25,19 +24,10 @@ const CardItem = () => {
   const getReasInfoFromLocal = useSelector((state)=>state.cartSlice.resInfo)
   const dispatch = useDispatch()
 
-  console.log(getReasInfoFromLocal);
-  
-  
- 
-  
-  
-
   const checkData = ()=>{
     if (userData) {
       toast.success("food orderd")
-      
-
-      
+        
     }else{
       toast.error("please Login")
       dispatch(toogleLoginBar())
@@ -65,7 +55,7 @@ const CardItem = () => {
     setvisible(false)
     return (
       <div className='mt-20 w-full '>
-        <div className='w-[50%]  mx-auto flex justify-center p-10'>
+        <div className='lg:w-[50%] w-[70%]  mx-auto flex justify-center p-10'>
           <div className='w-[90%] flex flex-col items-center gap-2' >
             <img className='h-[320px] w-[340px]' src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/2xempty_cart_yfxml0" alt="" />
             <h1 className='text-[22px] font-bold'>Your cart is empty</h1>
@@ -82,18 +72,19 @@ const CardItem = () => {
   
   return (
     <div className='mt-20 w-full '>
-      <div className='w-[50%] mx-auto'>
-        <div className="h-[150px] bg-white  flex items-center justify-between px-6 py-4 ">
-          <div className="flex flex-col">
-            <h1 className="text-2xl font-bold text-gray-900 tracking-wide">
-              {getReasInfoFromLocal?.name}
-            </h1>
-            <p className="text-gray-500 text-sm mt-1">Restaurant Details</p>
-          </div>
+      <div className=' lg:w-[50%] w-[80%] mx-auto'>
+        <div className="h-[150px]   flex items-center justify-between px-6 py-4 ">
           <img
           className="h-28 w-28 rounded-xl object-cover shadow-lg"
           src={`https://media-assets.swiggy.com/swiggy/image/upload/${getReasInfoFromLocal?.cloudinaryImageId}`}
           alt=""/>
+          <div className="flex flex-col">
+            <p className="text-gray-500 text-sm mt-1">Restaurant Name</p>
+            <h1 className="text-2xl font-bold text-gray-900 tracking-wide">
+              {getReasInfoFromLocal?.name}
+            </h1>
+            
+          </div>
       </div>
 
         {
@@ -149,4 +140,4 @@ const CardItem = () => {
   )
 }
 
-export default CardItem
+export default CartItem
